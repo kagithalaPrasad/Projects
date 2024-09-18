@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Forecast</title>
+</head>
+<body>
+    <h1>Weather Forecast</h1>
+    
+    <!-- Display data for city 1 -->
+    {% if weather_data1 %}
+        <h2>{{ weather_data1.current_weather.city }}</h2>
+        <p>Temperature: {{ weather_data1.current_weather.temperature }}°C</p>
+        <p>Description: {{ weather_data1.current_weather.description }}</p>
+        <img src="http://openweathermap.org/img/wn/{{ weather_data1.current_weather.icon }}.png" alt="Weather icon">
+        
+        <h3>5-Day Forecast:</h3>
+        <ul>
+            {% for forecast in weather_data1.forecast %}
+                <li>
+                    {{ forecast.datetime }} - Temp: {{ forecast.temperature }}°C - {{ forecast.description }}
+                    <img src="http://openweathermap.org/img/wn/{{ forecast.icon }}.png" alt="Weather icon">
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    <!-- Display data for city 2 -->
+    {% if weather_data2 %}
+        <h2>{{ weather_data2.current_weather.city }}</h2>
+        <p>Temperature: {{ weather_data2.current_weather.temperature }}°C</p>
+        <p>Description: {{ weather_data2.current_weather.description }}</p>
+        <img src="http://openweathermap.org/img/wn/{{ weather_data2.current_weather.icon }}.png" alt="Weather icon">
+        
+        <h3>5-Day Forecast:</h3>
+        <ul>
+            {% for forecast in weather_data2.forecast %}
+                <li>
+                    {{ forecast.datetime }} - Temp: {{ forecast.temperature }}°C - {{ forecast.description }}
+                    <img src="http://openweathermap.org/img/wn/{{ forecast.icon }}.png" alt="Weather icon">
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+</body>
+</html>
